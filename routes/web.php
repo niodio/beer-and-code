@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,9 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Dashboard', ['title' => 'Já vejo a galera indo a loucura com esta stack']);
-});
+// Route::get('/', function () {
+//     return Inertia::render('Dashboard', ['title' => 'Já vejo a galera indo a loucura com esta stack']);
+// });
+
+// create route to controller
+Route::get('/', [DashboardController::class, 'index']);

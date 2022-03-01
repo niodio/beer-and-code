@@ -8,19 +8,20 @@ use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request)
-    {
-        $search = $request->get('search');
+  public function index(Request $request)
+  {
 
-        
-        $query = Brewery::has('beers', '>', 0)->withCount('beers');
+    // $search = $request->get('search');
 
-        if ($search) {
-            $query->where('name', 'like', '%'. $search .'%');
-        }
 
-        $breweries = $query->paginate(8);
+    $query = Brewery::has('beers', '>', 0)->withCount('beers');
 
-        return Inertia::render('Dashboard', ['breweries' => $breweries]);
-    }
+    // if ($search) {
+    //     $query->where('name', 'like', '%'. $search .'%');
+    // }
+
+    $breweries = $query->paginate(5);
+
+    return Inertia::render('Dashboard', ['breweries' => $breweries]);
+  }
 }
