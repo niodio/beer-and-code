@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BeerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,5 @@ use App\Http\Controllers\DashboardController;
 // });
 
 // create route to controller
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/brewery/{id}/beers', [BeerController::class, 'index'])->name('brewery.beers');
